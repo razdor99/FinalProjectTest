@@ -49,8 +49,8 @@ def send_data(data):
 	write_word(LCD_ADDR ,buf)
 
 def init(addr, bl):
-#	global BUS
-#	BUS = smbus.SMBus(1)
+  #	global BUS
+  #	BUS = smbus.SMBus(1)
 	global LCD_ADDR
 	global BLEN
 	LCD_ADDR = addr
