@@ -4,7 +4,7 @@ import time
 
 def setup():
 	LCD1602.init(0x27, 1)	# init(slave address, background light)
-	LCD1602.write(0, 5, '8:30 am')
+	LCD1602.write(5, 0, '8:30 am')
 	LCD1602.write(0, 1, 'Good Morning Nick')
 	time.sleep(2)
 
