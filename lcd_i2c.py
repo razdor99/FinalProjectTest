@@ -4,8 +4,8 @@ import time
 
 def setup():
 	LCD1602.init(0x27, 1)	# init(slave address, background light)
-	LCD1602.write(0, 0, 'shane is a')
-	LCD1602.write(0, 1, 'wayback bitch')
+	LCD1602.write(0, 0, '8:30 am')
+	LCD1602.write(0, 1, 'Good morning')
 	time.sleep(2)
 
 def destroy():
