@@ -15,7 +15,7 @@ while True:
   currenthour = now.strftime("%H")
   currentminute = now.strftime("%M")
   currentyear = now.strftime("%y")
-  y = '%s, %s %s, %s' % (currentdayname,currentmonth, currentday,currentyear ))
+  y = '%s, %s %s, %s' % (currentdayname,currentmonth, currentday,currentyear )
   LCD1602.init(0x27, 1)
   LCD1602.write(0, 0, x)
   LCD1602.write(0, 1, y)
