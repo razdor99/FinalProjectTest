@@ -8,7 +8,8 @@ import RPi.GPIO as GPIO
 import time
 import json
 from calendardata import get_busy_times_from_google_calendar
-
+from passiveBuzzer import buzzsetup, buzzloop, buzzdestroy
+GPIO.setup(buttonPin, GPIO.IN)
 while True: #runs continuously
   with open('final.txt', 'r') as f: #opens json dump file
     data = json.load(f) #sets data to be loaded from json dump file
@@ -49,6 +50,11 @@ while True: #runs continuously
       if int(currenthour) == int(nighth):
         if int(currentminute) == int(nightm):
           print('nightalarm') ###where alarm goes
+          passiveBuzzer.buzzsetup()
+          passiveBuzzer.buzzloop()
+          if GPIO.input(buttonPin) == 1:
+            passiveBuzzer.buzzdestroy()
       if int(currenthour) == int(morningh):
         if int(currentminute) == int(morningm):
           print('dayalarm')  ###where alarm goes
+          
