@@ -10,7 +10,7 @@ CM = [0, 262, 294, 330, 350, 393, 441, 495]		# Frequency of Middle C notes
 
 CH = [0, 525, 589, 661, 700, 786, 882, 990]		# Frequency of High C notes
 song_1 = [	CH[3], CH[5], CH[6], CH[6], CH[5], CH[3] ]
-      
+beat_1 = [0.1,0.1,0.2,0.2,0.1,0.1]     
 def buzzsetup():
 	GPIO.setmode(GPIO.BOARD)		# Numbers GPIOs by physical location
 	GPIO.setup(Buzzer, GPIO.OUT)	# Set pins' mode is output
@@ -23,10 +23,11 @@ def buzzdestroy():
 
 def buzzloop(pin,song):
   if pin == 0:
-    Buzz.ChangeFrequency(song)	# Change the frequency along the song note
-    time.sleep(.5)
-  if pin == 1:
-    buzzdestroy()
+    for i in range(1,len(song_1)):
+      Buzz.ChangeFrequency(song)	# Change the frequency along the song note
+      time.sleep(beat_1[i])
+      if pin == 1:
+        buzzdestroy()
 
 
 
