@@ -86,7 +86,7 @@ def buzzloop(pin,song):
 buzzsetup()
 try:
   for i in range(1, len(mysong)):
-    buzzloop(GPIO.input(buttonPin),mario[i])
+    buzzloop(GPIO.input(buttonPin),notes[mario[i]])
     
 except KeyboardInterrupt:
   buzzdestroy()
