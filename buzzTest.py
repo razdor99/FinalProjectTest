@@ -11,6 +11,10 @@ CM = [0, 262, 294, 330, 350, 393, 441, 495]		# Frequency of Middle C notes
 CH = [0, 525, 589, 661, 700, 786, 882, 990]		# Frequency of High C notes
 song_1 = [	CH[3], CH[5], CH[6], CH[6], CH[5], CH[3], CM[3], CM[5], CM[6], CM[6], CM[5], CM[3],CH[3], CH[5], CH[6], CH[6], CH[5], CH[3], CM[3], CM[5], CM[6], CM[6], CM[5], CM[3],CH[3], CH[5], CH[6], CH[6], CH[5], CH[3], CM[3], CM[5], CM[6], CM[6], CM[5], CM[3],CH[3], CH[5], CH[6], CH[6], CH[5], CH[3], CM[3], CM[5], CM[6], CM[6], CM[5], CM[3],CH[3], CH[5], CH[6], CH[6], CH[5], CH[3], CM[3], CM[5], CM[6], CM[6], CM[5], CM[3]]
 
+
+mysong = [262,294,330,262,262,294,330,262,330,349,392,330,349,392,392,440,392,349,330,262,392,440,392,349,330,262,262,196,262,262,196,262]
+beat = [[0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,0.5,1,0.5,0.5,1,0.25,0.25,0.25,0.25,0.5,0.5,0.25,0.25,0.25,0.25,0.5,0.5,0.5,0.5,1,0.5,0.5,1]]
+
 def buzzsetup():
 	GPIO.setmode(GPIO.BOARD)		# Numbers GPIOs by physical location
 	GPIO.setup(Buzzer, GPIO.OUT)	# Set pins' mode is output
@@ -21,25 +25,19 @@ def buzzdestroy():
 	Buzz.stop()					# Stop the buzzer
 	GPIO.output(Buzzer, 1)
 
-def buzzloop(pin,song):
-  i = 0
+
+def buzzloop(pin,song, beat):
   if pin == 0:
     Buzz.ChangeFrequency(song)	# Change the frequency along the song note
-    time.sleep(0.5)
+    time.sleep(beat)
   if pin == 1:
-    i+=1
-    time.sleep(30)
-  if pin == 1 and i == 1:
     buzzdestroy()
-    i=0
-
-
-
 
 buzzsetup()
 try:
-  for i in range(1, len(song_1)):
-    buzzloop(GPIO.input(buttonPin),song_1[i])
+  for i in range(1, len(mysong)):
+    buzzloop(GPIO.input(buttonPin),mysong[i], beat[i])
+    
 except KeyboardInterrupt:
   buzzdestroy()
 
