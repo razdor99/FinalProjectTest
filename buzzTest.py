@@ -21,11 +21,11 @@ def buzzdestroy():
 	Buzz.stop()					# Stop the buzzer
 	GPIO.output(Buzzer, 1)
 
-def buzzloop(pin,song, beat):
+def buzzloop(pin,song):
   i = 0
   if pin == 0:
     Buzz.ChangeFrequency(song)	# Change the frequency along the song note
-    time.sleep(beat)
+    time.sleep(0.5)
   if pin == 1:
     i+=1
     time.sleep(30)
@@ -39,7 +39,7 @@ def buzzloop(pin,song, beat):
 buzzsetup()
 try:
   for i in range(1, len(song_1)):
-    buzzloop(GPIO.input(buttonPin),song_1[i], beat_1[i])
+    buzzloop(GPIO.input(buttonPin),song_1[i])
 except KeyboardInterrupt:
   buzzdestroy()
 
