@@ -78,7 +78,7 @@ def buzzdestroy():
 
 def buzzloop(pin,song):
   if pin == 0:
-    Buzz.ChangeFrequency(song)	# Change the frequency along the song note
+    Buzz.ChangeFrequency(int(song))	# Change the frequency along the song note
     time.sleep(0.5)
   if pin == 1:
     buzzdestroy()
